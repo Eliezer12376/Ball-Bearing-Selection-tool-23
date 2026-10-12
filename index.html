@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ball Bearing Selection Tool | SKF &amp; FAG Catalogue</title>
+<meta name="description" content="Select SKF and FAG ball bearings from catalogue data: deep groove, angular contact and self-aligning bearings, with life, speed, lubrication and sealing checks.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23c8763f'/%3E%3Ccircle cx='50' cy='50' r='30' fill='%23111215'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%23c9ced6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+</head>
+<body>
+
+<!-- ======================= NAVIGATION ======================= -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#home" class="brand"><span class="brand-ring" data-bearing="DG" data-balls="8" data-spin="0"></span>
+      <span>Ball Bearing<small>Selection Tool</small></span></a>
+    <ul class="links">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#selector">Selector</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#calculators">Calculators</a></li>
+      <li><a href="#theory">Theory</a></li>
+    </ul>
+    <div class="nav-r">
+      <button class="toggle" id="themeToggle" aria-label="Toggle dark / light mode"><span class="knob">🌙</span></button>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="ribbon">Precision in every rotation</div>
+      <h1>Ball Bearing <span>Selection Tool</span></h1>
+      <p>Find the right SKF or FAG ball bearing for your application. Enter loads, speed and life, and the tool calculates the required load rating, checks lubrication, speed, temperature, fits and sealing, and recommends a part number from the catalogue.</p>
+      <div class="cta">
+        <a href="#selector" class="btn btn-pri">Start selection →</a>
+        <a href="#catalogue" class="btn btn-sec">Browse catalogue</a>
+      </div>
+      <div class="hero-stats">
+        <div><b id="statParts">0</b><span>Part numbers</span></div>
+        <div><b>2</b><span>Manufacturers</span></div>
+        <div><b>4</b><span>Bearing types</span></div>
+        <div><b id="statSeries">0</b><span>Series</span></div>
+      </div>
+    </div>
+    <div class="hero-art reveal"><div data-bearing="DG" data-balls="10"></div></div>
+  </div>
+</section>
+
+<!-- ======================= PRODUCT CATEGORIES ======================= -->
+<section id="products">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Product range</span>
+      <h2 class="sec-title">Bearing <em>types</em> in the catalogue</h2>
+      <p class="sec-lead">SKF and FAG ball bearings from 10 mm to 100 mm bore. Each type suits a different combination of load, speed and alignment.</p>
+    </div>
+    <div class="cats">
+      <article class="cat-card reveal"><div data-bearing="DG" data-balls="9" data-spin="0"></div>
+        <h3>Deep Groove</h3><ul><li>Series 60, 62, 63, 160</li><li>Radial + moderate axial loads</li><li>High speeds, low noise</li><li>Open, 2Z / 2ZR shields, 2RS1 / 2RSR seals</li></ul></article>
+      <article class="cat-card reveal"><div data-bearing="AC1" data-balls="12" data-spin="0"></div>
+        <h3>Angular Contact · Single Row</h3><ul><li>Series 72B, 73B</li><li>40° contact angle</li><li>High axial load, one direction</li><li>BEP: glass-fibre polyamide cage</li></ul></article>
+      <article class="cat-card reveal"><div data-bearing="AC2" data-balls="10" data-spin="0"></div>
+        <h3>Angular Contact · Double Row</h3><ul><li>Series 32A, 33A</li><li>30° contact angle</li><li>Axial loads in both directions</li><li>Compact replacement for a pair</li></ul></article>
+      <article class="cat-card reveal"><div data-bearing="SA" data-balls="10" data-spin="0"></div>
+        <h3>Self-Aligning</h3><ul><li>Series 12, 13, 22, 23</li><li>Tolerates shaft misalignment</li><li>Cylindrical or tapered (K) bore</li><li>Low friction, moderate loads</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SELECTOR ======================= -->
+<section id="selector" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Selection process</span>
+      <h2 class="sec-title">Bearing <em>selector</em></h2>
+      <p class="sec-lead">Follow the eight steps. Bearing life is a system property: L<sub>bearing</sub> = f(L<sub>raceways</sub>, L<sub>rolling elements</sub>, L<sub>cage</sub>, L<sub>lubricant</sub>, L<sub>seals</sub>), so every component is checked.</p>
+    </div>
+    <div class="tool">
+      <form class="panel" id="selForm" autocomplete="off">
+        <div class="step"><div class="step-n">1</div><h3>Operating conditions</h3><p class="sub">Loads, required life and reliability</p>
+          <div class="fields">
+            <div class="g2"><div><label for="Fr">Radial load Fᵣ<span class="u">kN</span></label><input id="Fr" type="number" step="any" min="0" value="2.5"></div>
+              <div><label for="Fa">Axial load Fₐ<span class="u">kN</span></label><input id="Fa" type="number" step="any" min="0" value="1.0"></div></div>
+            <div class="g2"><div><label for="Lh">Required life L₁₀ₕ<span class="u">h</span></label><input id="Lh" type="number" step="any" min="1" value="10000"></div>
+              <div><label for="R">Reliability<span class="u">%</span></label><select id="R"><option>90</option><option>95</option><option>96</option><option>97</option><option>98</option><option>99</option></select></div></div>
+            <div class="g2"><div><label for="Ka">Load factor Kₐ</label><select id="Ka"><option value="1">1.0 – smooth</option><option value="1.2">1.2 – light shock</option><option value="1.5">1.5 – moderate shock</option><option value="2">2.0 – heavy shock</option></select></div>
+              <div><label for="s0">Static safety s₀ min</label><select id="s0"><option value="1">1.0 – normal</option><option value="1.5">1.5 – quiet running</option><option value="2">2.0 – high demands</option><option value="0.5">0.5 – smooth, low demands</option></select></div></div>
+          </div></div>
+
+        <div class="step"><div class="step-n">2</div><h3>Bearing type</h3><p class="sub">Choose from the catalogue range</p>
+          <div class="seg">
+            <label><input type="radio" name="type" value="DG" checked><span>Deep groove</span></label>
+            <label><input type="radio" name="type" value="AC1"><span>Angular · single</span></label>
+            <label><input type="radio" name="type" value="AC2"><span>Angular · double</span></label>
+            <label><input type="radio" name="type" value="SA"><span>Self-aligning</span></label>
+          </div><p class="note" id="typeNote"></p></div>
+
+        <div class="step"><div class="step-n">3</div><h3>Bearing size</h3><p class="sub">P = X·Fᵣ + Y·Fₐ and C<sub>req</sub> = P·L₁₀<sup>1/3</sup></p>
+          <div class="g2"><div><label for="d">Shaft diameter d<span class="u">mm</span></label><select id="d"></select></div>
+            <div><label for="mfr">Manufacturer</label><select id="mfr"><option value="ALL">SKF + FAG</option><option>SKF</option><option>FAG</option></select></div></div></div>
+
+        <div class="step"><div class="step-n">4</div><h3>Lubrication</h3><p class="sub">Lubricant life is part of the system life</p>
+          <select id="lube"><option value="grease">Grease (lubricated for life)</option><option value="oil">Oil bath</option></select></div>
+
+        <div class="step"><div class="step-n">5</div><h3>Temperature &amp; speed</h3><p class="sub">Checked against cage and seal-lip limits</p>
+          <div class="g2"><div><label for="N">Speed N<span class="u">rpm</span></label><input id="N" type="number" step="any" min="1" value="720"></div>
+            <div><label for="T">Temperature<span class="u">°C</span></label><input id="T" type="number" step="any" value="70"></div></div></div>
+
+        <div class="step"><div class="step-n">6</div><h3>Bearing interfaces</h3><p class="sub">Shaft / housing fits and internal clearance</p>
+          <div class="fields"><div class="g2">
+            <div><label for="shaftFit">Shaft fit</label><select id="shaftFit"><option>j5</option><option>j6</option><option selected>k5</option><option>k6</option><option>m5</option><option>m6</option><option>n6</option></select></div>
+            <div><label for="housingFit">Housing fit</label><select id="housingFit"><option>G7</option><option selected>H7</option><option>J7</option><option>K7</option><option>M7</option><option>N7</option></select></div></div>
+            <div><label for="clear">Clearance class</label><select id="clear"><option value="C2">C2 – smaller than normal</option><option value="CN" selected>Normal (CN)</option><option value="C3">C3 – larger than normal</option><option value="C4">C4 – larger than C3</option></select></div></div></div>
+
+        <div class="step"><div class="step-n">7</div><h3>Execution &amp; sealing</h3><p class="sub">Precision class and sealing arrangement</p>
+          <div class="fields">
+            <div><label for="prec">Precision</label><select id="prec"><option value="P0">Normal (P0 / ABEC 1)</option><option value="P6">P6 (ABEC 3)</option><option value="P5">P5 (ABEC 5)</option><option value="P4">P4 (ABEC 7)</option></select></div>
+            <div class="seg" style="grid-template-columns:repeat(3,1fr)">
+              <label><input type="radio" name="seal" value="open" checked><span>Open</span></label>
+              <label><input type="radio" name="seal" value="shield"><span>Shields 2Z</span></label>
+              <label><input type="radio" name="seal" value="seal"><span>Seals 2RS</span></label>
+            </div><p class="note">Shields / seals are available for deep groove bearings in the catalogue.</p></div></div>
+
+        <div class="step"><div class="step-n">8</div><h3>Verify &amp; select</h3><p class="sub">Run the complete system check</p>
+          <button type="submit" class="btn btn-pri" style="width:100%">Calculate &amp; select bearing</button></div>
+      </form>
+
+      <div class="right">
+        <div class="panel"><span class="eyebrow">Result</span><h3 style="font-size:1.6rem;text-transform:uppercase;margin:8px 0 16px">Selected bearing</h3>
+          <div id="selOut"><div class="empty"><div data-bearing="DG" data-balls="9"></div><p>Complete the steps and press <b>Calculate &amp; select bearing</b>.</p></div></div></div>
+        <div class="panel" id="chartCard" hidden><span class="eyebrow">Visualization</span><h3 style="font-size:1.6rem;text-transform:uppercase;margin:8px 0 16px">Estimated life vs operating speed</h3>
+          <div class="chart-box"><canvas id="lifeChart"></canvas></div><p class="note" id="chartNote"></p></div>
+        <div class="panel" id="candCard" hidden><span class="eyebrow">Screening</span><h3 style="font-size:1.6rem;text-transform:uppercase;margin:8px 0 16px">Candidates for d = <span id="candD"></span> mm</h3>
+          <div id="candOut"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CATALOGUE ======================= -->
+<section id="catalogue">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Product codes</span>
+      <h2 class="sec-title">SKF &amp; FAG <em>catalogue</em></h2>
+      <p class="sec-lead">Search every part number. Press <b>Use</b> to load a bearing's type, bore and manufacturer into the selector.</p>
+    </div>
+    <div class="filters">
+      <input id="fSearch" type="search" placeholder="Search part number or description, e.g. 6205-2RS1">
+      <select id="fMfr"><option value="ALL">All manufacturers</option><option>SKF</option><option>FAG</option></select>
+      <select id="fType"><option value="ALL">All types</option><option value="DG">Deep groove</option><option value="AC1">Angular · single row</option><option value="AC2">Angular · double row</option><option value="SA">Self-aligning</option></select>
+      <select id="fBore"><option value="ALL">All bores</option></select>
+      <select id="fSeal"><option value="ALL">All executions</option><option value="open">Open</option><option value="shield">Shielded</option><option value="seal">Sealed</option></select>
+    </div>
+    <p class="count" id="catCount"></p>
+    <div class="tbl-wrap" id="catTable"></div>
+    <div class="pager"><button class="btn btn-sec btn-sm" id="prev">← Prev</button><span id="pageInfo"></span><button class="btn btn-sec btn-sm" id="next">Next →</button></div>
+    <p class="note">* D, B, C, C₀ and speeds are estimated typical values for each series and bore. Part numbers come from the supplied SKF/FAG list. Verify ratings against the official catalogue before final design.</p>
+  </div>
+</section>
+
+<!-- ======================= CALCULATORS ======================= -->
+<section id="calculators" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Laboratory problems</span>
+      <h2 class="sec-title">Engineering <em>calculators</em></h2>
+      <p class="sec-lead">Work-cycle loads, bearing life and reliability – pre-filled with the laboratory problem values.</p>
+    </div>
+    <div class="calcs">
+      <div class="panel calc reveal"><h3>Work cycle</h3><p class="sub">Cyclic loads and speeds · Pₑ = [ΣNP³ / ΣN]<sup>1/3</sup></p>
+        <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Load P (N)</th><th>Speed (rpm)</th><th>Time %</th></tr></thead>
+          <tbody id="cycBody">
+            <tr><td>1</td><td><input value="3000"></td><td><input value="720"></td><td><input value="30"></td></tr>
+            <tr><td>2</td><td><input value="7000"></td><td><input value="1440"></td><td><input value="50"></td></tr>
+            <tr><td>3</td><td><input value="5000"></td><td><input value="900"></td><td><input value="20"></td></tr>
+          </tbody></table></div>
+        <div class="g2" style="margin-top:12px;align-items:end"><div><label for="cycC">Dynamic capacity C<span class="u">N</span></label><input id="cycC" type="number" value="16600"></div>
+          <button class="btn btn-sec" id="addEl" type="button">+ Add element</button></div>
+        <button class="btn btn-pri" id="cycBtn" type="button" style="width:100%;margin-top:12px">Calculate</button>
+        <div class="res" id="cycOut"></div></div>
+
+      <div class="panel calc reveal"><h3>Bearing life</h3><p class="sub">P = X·V·Fᵣ + Y·Fₐ · L₁₀ = (C/P)<sup>p</sup></p>
+        <div class="fields">
+          <div class="g2"><div><label for="lFr">Fᵣ<span class="u">N</span></label><input id="lFr" type="number" value="2500"></div><div><label for="lFa">Fₐ<span class="u">N</span></label><input id="lFa" type="number" value="1000"></div></div>
+          <div class="g3"><div><label for="lX">X</label><input id="lX" type="number" step="any" value="0.56"></div><div><label for="lY">Y</label><input id="lY" type="number" step="any" value="1.6"></div><div><label for="lV">V</label><input id="lV" type="number" step="any" value="1"></div></div>
+          <div class="g3"><div><label for="lC">C<span class="u">N</span></label><input id="lC" type="number" value="7350"></div><div><label for="ln">n<span class="u">rpm</span></label><input id="ln" type="number" value="720"></div>
+            <div><label for="lp">Type</label><select id="lp"><option value="3">Ball p=3</option><option value="3.3333333">Roller p=10/3</option></select></div></div>
+          <div><label for="lR">Reliability %</label><select id="lR"><option>90</option><option>95</option><option>96</option><option>97</option><option>98</option><option>99</option></select></div>
+        </div>
+        <button class="btn btn-pri" id="lifeBtn" type="button" style="width:100%;margin-top:12px">Calculate</button>
+        <div class="res" id="lifeOut"></div></div>
+
+      <div class="panel calc reveal"><h3>Reliability</h3><p class="sub">R = e<sup>−(L/a)<sup>b</sup></sup>, a = 6.84, b = 1.17 · R<sub>S</sub> = R<sup>N</sup></p>
+        <div class="fields">
+          <div><label for="rR">Required reliability R<span class="u">%</span></label><input id="rR" type="number" step="any" value="95"></div>
+          <div><label for="rL10">L₁₀ life<span class="u">million rev</span></label><input id="rL10" type="number" step="any" value="100"></div>
+          <div><label for="rN">Bearings in system N</label><input id="rN" type="number" value="2"></div>
+        </div>
+        <button class="btn btn-pri" id="relBtn" type="button" style="width:100%;margin-top:12px">Calculate</button>
+        <div class="res" id="relOut"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= THEORY ======================= -->
+<section id="theory">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="eyebrow">Design data</span>
+      <h2 class="sec-title">Theory &amp; <em>formulas</em></h2>
+      <p class="sec-lead">Rolling contact (anti-friction) bearings use balls or rollers between surfaces in relative motion. Selection balances load capacity, speed, life, alignment and space.</p>
+    </div>
+    <div class="formulas">
+      <div class="f-card reveal"><h3>Equivalent dynamic load</h3><div class="eq">P = X·V·Fᵣ + Y·Fₐ</div><p>V = race-rotation factor, X = radial factor, Y = thrust factor. X and Y depend on bearing type and Fₐ/Fᵣ compared with e.</p></div>
+      <div class="f-card reveal"><h3>Load–life equation</h3><div class="eq">L₁₀ = (C / P)<sup>p</sup></div><p>L₁₀ in million revolutions; p = 3 for ball bearings, 10/3 for roller bearings.</p></div>
+      <div class="f-card reveal"><h3>Life in hours</h3><div class="eq">L₁₀ = 60·n·L₁₀ₕ / 10⁶</div><p>n = speed (rpm), L₁₀ₕ = rated life (hours).</p></div>
+      <div class="f-card reveal"><h3>Cyclic loads</h3><div class="eq">Pₑ = [ΣNP³ / ΣN]<sup>1/3</sup></div><p>Equivalent load for a work cycle; continuous variation: Pₑ = [(1/N)∫P³dN]<sup>1/3</sup>.</p></div>
+      <div class="f-card reveal"><h3>Reliability</h3><div class="eq">L/L₁₀ = [ln(1/R) / ln(1/R₉₀)]<sup>1/b</sup></div><p>Weibull distribution with a = 6.84, b = 1.17. System: R<sub>S</sub> = R<sup>N</sup>.</p></div>
+      <div class="f-card reveal"><h3>System life</h3><div class="eq">L = f(L<sub>r</sub>, L<sub>re</sub>, L<sub>c</sub>, L<sub>l</sub>, L<sub>s</sub>)</div><p>Raceways, rolling elements, cage, lubricant and seals – the weakest component limits the bearing life.</p></div>
+    </div>
+    <div class="process">
+      <div class="proc reveal"><h4>Performance</h4><p>Define loads, speed, required life and reliability.</p></div>
+      <div class="proc reveal"><h4>Bearing type</h4><p>Radial → deep groove; high axial → angular contact; misalignment → self-aligning.</p></div>
+      <div class="proc reveal"><h4>Bearing size</h4><p>Calculate P and C<sub>req</sub>; choose the bearing with C ≥ C<sub>req</sub>.</p></div>
+      <div class="proc reveal"><h4>Lubrication</h4><p>Grease for simplicity, oil for high speed or temperature.</p></div>
+      <div class="proc reveal"><h4>Temperature &amp; speed</h4><p>Check cage, seal and lubricant limits.</p></div>
+      <div class="proc reveal"><h4>Interfaces</h4><p>Choose shaft / housing fits and internal clearance.</p></div>
+      <div class="proc reveal"><h4>Execution &amp; sealing</h4><p>Precision class, shields or seals.</p></div>
+      <div class="proc reveal"><h4>Mounting</h4><p>Verify arrangement, mounting method and maintenance.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b style="color:var(--text);font-family:'Barlow Condensed';font-size:1.2rem;text-transform:uppercase">Ball Bearing Selection Tool</b><br>Machine design laboratory · Selection of rolling element bearing</div>
+    <p class="disclaimer">Part numbers are from the supplied SKF and FAG product-code list. Dimensions, load ratings and speed limits are estimated typical values for educational use; verify every selection against the current SKF or Schaeffler (FAG) catalogue. SKF and FAG are trademarks of their respective owners.</p>
+  </div>
+</footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
